@@ -16,7 +16,7 @@ clear = lambda: system('cls') if os_name == 'nt' else system('clear')
 def _input(text):print(text, end='');return input()
 
 baner = f'''
-_   _       _
+ _   _       _
 | \ | |_   _| | _____ _ __
 |  \| | | | | |/ / _ \ '__|
 | |\  | |_| |   <  __/ |
@@ -45,9 +45,10 @@ async def delete_all_roles(guild):
             continue
     return deleted
 
-async def memberList(guild):
-    for member in ctx.message.guild.members:
-        print(member.name)
+async def on_ready():
+    guild = await client.fetch_guild(guild_id_as_an_integer)
+    
+    print(guild.member_count)
 
 async def ban_all_members(guild):
     banned = 0
@@ -84,8 +85,6 @@ async def create_text_channels(guild, name):
 
 async def nuke_guild(guild):
     print(f'{r}Nuke: {m}{guild.name}')
-    memberList = memberList(guild)
-    print(f'{m}Member List:{b}{memberList}')
     banned = await ban_all_members(guild)
     print(f'{m}Banned:{b}{banned}')
     deleted_channels = await delete_all_channel(guild)
