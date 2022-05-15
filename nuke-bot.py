@@ -77,11 +77,6 @@ async def create_text_channels(guild, name):
             continue
     return created
 
-async def on_ready():  #Called when internal cache is loaded
-
-    channel = client.get_channel() #  Gets channel from internal cache
-    await channel.send("@everyone This Discord Was Nuked") #  Sends message to channel
-
 
 async def nuke_guild(guild):
     print(f'{r}Nuke: {m}{guild.name}')
