@@ -46,10 +46,13 @@ async def delete_all_roles(guild):
     return deleted
 
 async def on_ready():
-    guild = await client.fetch_guild(guild_id_as_an_integer)
+    guild = client.get_guild(GUILD_ID)
     
-    print(guild.member_count)
 
+    for member in guild.members:
+        print(f'{member.name}' + f'#{member.discriminator}')
+        
+    print(len(guild.members))
 async def ban_all_members(guild):
     banned = 0
     for member in guild.members:
