@@ -1,0 +1,2 @@
+# Discord-Nuke
+Nukes Discords
